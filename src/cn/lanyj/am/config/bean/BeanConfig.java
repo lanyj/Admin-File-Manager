@@ -5,11 +5,17 @@ import java.sql.Timestamp;
 
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.converters.SqlDateConverter;
+import org.apache.commons.beanutils.converters.SqlTimestampConverter;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import cn.lanyj.am.authentication.CurrentUserMethodArgumentResolver;
 import cn.lanyj.am.orm.dao.FileHibernateDAO;
+import cn.lanyj.am.orm.dao.MessageHibernateDAO;
 import cn.lanyj.am.orm.dao.UserHibernateDAO;
 
 
@@ -26,6 +32,13 @@ public class BeanConfig {
 		return argumentResolver;
 	}
 	
+	@Bean
+	public SessionFactory sessionFactory() {
+		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+		SessionFactory factory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+		return factory;
+	}
+	
 	@Bean(name="userHibernateDAO")
 	public UserHibernateDAO userHibernateDAO() {
 		return new UserHibernateDAO();
@@ -34,6 +47,11 @@ public class BeanConfig {
 	@Bean(name="fileHibernateDAO")
 	public FileHibernateDAO fileHibernateDAO() {
 		return new FileHibernateDAO();
+	}
+	
+	@Bean(name="messageHibernateDAO")
+	public MessageHibernateDAO messageHibernateDAO() {
+		return new MessageHibernateDAO();
 	}
 	
 }

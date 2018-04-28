@@ -1,4 +1,4 @@
-var BASE_URL = 'http://www.lanyj.cn/am/api/';
+var BASE_URL = '/am/api/';
 
 function logout() {
 	$.ajax({

@@ -10,12 +10,11 @@ import cn.lanyj.am.web.api.domin.RestRetDomin;
 
 public class FileService {
 	
-//	final static String ROOT = System.getProperty("user.dir") + "/";
 	final static String ROOT = "/tomcat/am/";
 	
 	public static RestRetDomin save(RestRetDomin ret, File file, MultipartFile mf) {
 		User user = file.getUploader();
-		String root = ROOT + user.getUUID() + "/" + file.getUploader().getUUID() + "/";
+		String root = ROOT + user.getUUID() + "/";
 		try {
 			java.io.File parent = new java.io.File(root);
 			if(!parent.exists()) {
