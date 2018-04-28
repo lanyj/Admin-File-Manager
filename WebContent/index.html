@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-5585421066874504",
+    enable_page_level_ads: true
+  });
+</script>
+
+<!--
+        ===
+        This comment should NOT be removed.
+
+        Charisma v2.0.0
+
+        Copyright 2012-2014 Muhammad Usman
+        Licensed under the Apache License v2.0
+        http://www.apache.org/licenses/LICENSE-2.0
+
+        http://usman.it
+        http://twitter.com/halalit_usman
+        ===
+    -->
+<meta charset="utf-8">
+<title>Admin Manager</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Admin manager, 给你一种简单的方式去管理文件">
+<meta name="author" content="lanyj">
+
+<!-- The styles -->
+<link id="bs-css" href="css/bootstrap-cerulean.min.css" rel="stylesheet">
+
+<link href="css/charisma-app.css" rel="stylesheet">
+<link href='bower_components/chosen/chosen.min.css' rel='stylesheet'>
+<link href='bower_components/colorbox/example3/colorbox.css'
+	rel='stylesheet'>
+<!-- <link href='bower_components/responsive-tables/responsive-tables.css' -->
+<!-- 	rel='stylesheet'> -->
+
+<link href='css/jquery.noty.css' rel='stylesheet'>
+<link href='css/noty_theme_default.css' rel='stylesheet'>
+<link href='css/elfinder.min.css' rel='stylesheet'>
+<link href='css/elfinder.theme.css' rel='stylesheet'>
+<link href='css/jquery.iphone.toggle.css' rel='stylesheet'>
+<link href='css/uploadify.css' rel='stylesheet'>
+<link href='css/animate.min.css' rel='stylesheet'>
+<link rel="stylesheet" type="text/css" href="css/datatables.min.css" />
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"> -->
+<!-- jQuery -->
+<script type="text/javascript" language="javascript"
+	src="js/jquery-3.3.1.min.js"></script>
+
+<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- The fav icon -->
+<link rel="shortcut icon" href="img/favicon.ico">
+
+<style>
+.self-copyright {
+	background-color: rgba(0, 0, 0, 1.0);
+	color: rgba(255, 0, 128, 1);
+}
+</style>
+</head>
+
+<body>
+	<!-- topbar starts -->
+	<div class="navbar navbar-default" role="navigation">
+
+		<div class="navbar-inner">
+			<button type="button" class="navbar-toggle pull-left animated flip">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.html"> <img
+				alt="Charisma Logo" src="img/logo20.png" class="hidden-xs" /> <span>A.M.</span></a>
+
+			<!-- user dropdown starts -->
+			<div class="btn-group pull-right">
+				<button class="btn btn-default dropdown-toggle"
+					data-toggle="dropdown">
+					<i class="glyphicon glyphicon-user"></i><span
+						class="hidden-sm hidden-xs" id="index_username"> </span> <span
+						class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li id="index_btn_login"></li>
+				</ul>
+			</div>
+			<!-- user dropdown ends -->
+
+			<!-- theme selector starts -->
+			<div class="btn-group pull-right theme-container animated tada">
+				<button class="btn btn-default dropdown-toggle"
+					data-toggle="dropdown">
+					<i class="glyphicon glyphicon-tint"></i><span
+						class="hidden-sm hidden-xs">主题</span> <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" id="themes">
+					<li><a data-value="classic" href="#"><i class="whitespace"></i>
+							经典</a></li>
+					<li><a data-value="cerulean" href="#"><i
+							class="whitespace"></i> 天蓝</a></li>
+					<li><a data-value="cyborg" href="#"><i class="whitespace"></i>
+							纯黑</a></li>
+					<li><a data-value="simplex" href="#"><i class="whitespace"></i>
+							简洁</a></li>
+					<li><a data-value="darkly" href="#"><i class="whitespace"></i>
+							暗黑</a></li>
+					<li><a data-value="lumen" href="#"><i class="whitespace"></i>
+							流明</a></li>
+					<li><a data-value="slate" href="#"><i class="whitespace"></i>
+							凸显</a></li>
+					<li><a data-value="spacelab" href="#"><i
+							class="whitespace"></i> 蔚蓝</a></li>
+					<li><a data-value="united" href="#"><i class="whitespace"></i>
+							橘红</a></li>
+				</ul>
+			</div>
+			<!-- theme selector ends -->
+
+		</div>
+	</div>
+	<!-- topbar ends -->
+	<div class="ch-container">
+		<div class="row">
+
+			<!-- left menu starts -->
+			<div class="col-sm-2 col-lg-2">
+				<div class="sidebar-nav">
+					<div class="nav-canvas">
+						<div class="nav-sm nav nav-stacked"></div>
+						<ul class="nav nav-pills nav-stacked main-menu">
+							<li class="nav-header">系统</li>
+							<li><a class="ajax-link" href="index.html"><i
+									class="glyphicon glyphicon-home"></i><span> 主页</span></a></li>
+							<li><a class="ajax-link" href="#index_file_table_href"><i
+									class="glyphicon glyphicon-folder-open"></i><span> 我的文件</span></a></li>
+							<li class="accordion"><a href="#"><i
+									class="glyphicon glyphicon-bell blue"></i><span> 消息</span></a>
+								<ul class="nav nav-pills nav-stacked">
+									<li><a href="#index_message_send_form_href">写信</a></li>
+									<li><a href="#index_message_inbox_table_href">收件箱</a></li>
+									<li><a href="#index_message_outbox_table_href">发件箱</a></li>
+								</ul></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--/span-->
+			<!-- left menu ends -->
+
+			<noscript>
+				<div class="alert alert-block col-md-12">
+					<h4 class="alert-heading">Warning!</h4>
+
+					<p>
+						You need to have <a href="http://en.wikipedia.org/wiki/JavaScript"
+							target="_blank">JavaScript</a> enabled to use this site.
+					</p>
+				</div>
+			</noscript>
+
+			<div id="content" class="col-lg-10 col-sm-10">
+				<!-- content starts -->
+				<div>
+					<ul class="breadcrumb" id="index_breadcrumb">
+					</ul>
+				</div>
+				<div class=" row">
+					<div class="col-md-3 col-sm-3 col-xs-6">
+						<a data-toggle="tooltip" title="成员" class="well top-block"
+							href="#"> <i class="glyphicon glyphicon-user blue"></i>
+
+							<div>当前人数</div>
+							<div>
+								<span id="index_total_member">0</span>
+							</div> <span class="notification" id="index_new_member">0</span>
+						</a>
+					</div>
+
+
+					<div class="col-md-3 col-sm-3 col-xs-6">
+						<a data-toggle="tooltip" title="文件" class="well top-block"
+							href="#index_file_table_href"> <i class="glyphicon glyphicon-folder-open"></i>
+							<div>文件</div>
+							<div>
+								<span id="index_total_file">0</span>
+							</div> <!-- <span class="notification yellow" id="index_new_file">0</span> -->
+						</a>
+					</div>
+
+					<div class="col-md-3 col-sm-3 col-xs-6">
+						<a data-toggle="tooltip" title="消息" class="well top-block"
+							href="#index_message_inbox_table_href"> <i class="glyphicon glyphicon-envelope"></i>
+							<div>消息</div>
+							<div>
+								<span id="index_total_message">0</span>
+							</div> <span class="notification red" id="index_new_message">0</span>
+						</a>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="box col-md-8">
+						<div class="box-inner">
+							<div class="box-header well" data-original-title="">
+								<h2>
+									<i class="glyphicon glyphicon-info-sign"></i> 介绍
+								</h2>
+
+								<div class="box-icon">
+									<a href="#" class="btn btn-minimize btn-round btn-default"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a href="#"
+										class="btn btn-close btn-round btn-default"><i
+										class="glyphicon glyphicon-remove"></i></a>
+								</div>
+							</div>
+							<div class="box-content row">
+								<div class="col-lg-7 col-md-12">
+									<h1>
+										Admin Manager <br> <small>简单轻便的文件系统</small>
+									</h1>
+									<p>这是一个简单的云端文件管理系统，你可以在这建立自己的文件目录。然后可以与好友一起互传文档，聊天等。</p>
+
+									<p>
+										<b>你可以分享此网站，让更多人加入我们。(:</b>
+									</p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="box col-md-4" id="index_message_send_form_href">
+						<div class="box-inner ">
+							<div class="box-header well" data-original-title="">
+								<h2>
+									<i class="glyphicon glyphicon-list-alt"></i> 通讯
+								</h2>
+
+								<div class="box-icon">
+									<a href="#" class="btn btn-minimize btn-round btn-default"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a href="#"
+										class="btn btn-close btn-round btn-default"><i
+										class="glyphicon glyphicon-remove"></i></a>
+								</div>
+							</div>
+							<div class="box-content">
+								<h3>写信息</h3>
+								<!-- Begin MailChimp Signup Form -->
+								<div class="mc_embed_signup">
+									<form novalidate id="index_message_to_form">
+										<div class="form-gropu">
+											<label for="messageTarget">请输入对方用户名</label> <input
+												type="email" id="index_message_to_username" name="to"
+												class="form-control" placeholder="对方用户名" required>
+										</div>
+										<div class="clearfix"></div>
+										<div class="form-group">
+											<label for="messageContent">消息内容</label> <input type="text"
+												name="content" id="index_message_to_content"
+												class="form-control autogrow"></input>
+										</div>
+										<div class="clearfix"></div>
+										<div class="form-group text-center">
+											<input type="button" id="index_message_to_send" value="发送"
+												class="button form-control">
+										</div>
+									</form>
+								</div>
+
+								<!--End mc_embed_signup-->
+								<br />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+				</div>
+				<!--/row-->
+
+				<div class="row" id="index_message_inbox_table_href">
+					<div class="box-content col-md-12">
+						<div class="box-inner">
+							<div class="box-header well" data-original-title="">
+								<h2>
+									<i class="glyphicon glyphicon-envelope"></i> 收件箱
+								</h2>
+								<div class="box-icon">
+									<a href="#" class="btn btn-minimize btn-round btn-default"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a href="#"
+										class="btn btn-close btn-round btn-default"><i
+										class="glyphicon glyphicon-remove"></i></a>
+								</div>
+							</div>
+							<div class="box-content">
+								<table
+									class="table table-striped table-bordered bootstrap-datatable datatable responsive"
+									id="index_message_inbox_table">
+									<thead>
+										<tr>
+											<th>发送者</th>
+											<th>发送时间</th>
+											<th>内容</th>
+											<th>状态</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!--/span-->
+
+				</div>
+				<!--/row-->
+
+				<div class="row" id="index_message_outbox_table_href">
+					<div class="box-content col-md-12">
+						<div class="box-inner">
+							<div class="box-header well" data-original-title="">
+								<h2>
+									<i class="glyphicon glyphicon-envelope"></i> 发件箱
+								</h2>
+								<div class="box-icon">
+									<a href="#" class="btn btn-minimize btn-round btn-default"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a href="#"
+										class="btn btn-close btn-round btn-default"><i
+										class="glyphicon glyphicon-remove"></i></a>
+								</div>
+							</div>
+							<div class="box-content">
+								<table
+									class="table table-striped table-bordered bootstrap-datatable datatable responsive"
+									id="index_message_outbox_table">
+									<thead>
+										<tr>
+											<th>接收方</th>
+											<th>发送时间</th>
+											<th>内容</th>
+											<th>状态</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!--/span-->
+
+				</div>
+				<!--/row-->
+
+				<div class="row" id="index_file_table_href">
+					<div class="box-content col-md-12">
+						<div class="box-inner">
+							<div class="box-header well" data-original-title="">
+								<h2>
+									<i class="glyphicon glyphicon-folder-open"></i> 文件
+								</h2>
+								<div class="box-icon">
+									<a href="#" class="btn btn-minimize btn-round btn-default"><i
+										class="glyphicon glyphicon-chevron-up"></i></a> <a href="#"
+										class="btn btn-close btn-round btn-default"><i
+										class="glyphicon glyphicon-remove"></i></a>
+								</div>
+							</div>
+							<div class="box-content">
+								<table
+									class="table table-striped table-bordered bootstrap-datatable datatable responsive"
+									id="index_file_table">
+									<thead>
+										<tr>
+											<th>文件名</th>
+											<th>上传时间</th>
+											<th>上传者</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+								<div class="row">
+									<form class="form-horizontal" id="index_file_form_upload">
+										<input type="hidden" name="parent" value="" />
+										<div class="input-group input-group-lg">
+											<span class="input-group-addon"><i
+												class="glyphicon glyphicon-upload red"></i></span> <input type="file"
+												name="file" class="form-control" id="index_file_control_upload" >
+										</div>
+										<div class="clearfix"></div>
+										<br>
+										<p class="center col-md-6">
+											<input type="button" class="btn btn-primary" value="上传"
+												id="index_file_btn_upload" />
+										</p>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--/span-->
+
+				</div>
+				<!--/row-->
+
+
+
+				<!--/span-->
+				<!-- content ends -->
+			</div>
+			<!--/#content.col-md-0-->
+		</div>
+		<!--/fluid-row-->
+
+		<hr>
+
+		<div class="modal fade" id="index_message_show_dialog" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+			index-message-show-dialog-uuid="">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">×</button>
+						<h3>
+							<span id="index_message_show_dialog_title"></span>
+						</h3>
+					</div>
+					<div class="modal-body">
+						<p>
+							<span id="index_message_show_dialog_content"></span>
+						</p>
+					</div>
+					<div class="modal-footer">
+						<a href="#" id="index_message_show_dialog_read"
+							class="btn btn-info" data-dismiss="modal">标为已读</a> <a href="#"
+							id="index_message_show_dialog_close" class="btn btn-primary"
+							data-dismiss="modal">关闭</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="index_file_show_dialog" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+			index-file-show-dialog-uuid="">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">×</button>
+						<h3>
+							<span id="index_file_show_dialog_title"></span>
+						</h3>
+					</div>
+					<div class="modal-body">
+						<p>
+							<span id="index_file_show_dialog_content"></span>
+						</p>
+					</div>
+					<div class="modal-footer">
+						<a href="#" id="index_file_show_dialog_save" class="btn btn-info"
+							data-dismiss="modal">保存</a> <a href="#"
+							id="index_file_show_dialog_close" class="btn btn-primary"
+							data-dismiss="modal">关闭</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<footer class="row">
+			<div class="text-center copyright">&copy; lanyj, all right
+				reserved.</div>
+		</footer>
+
+
+	</div>
+	<!--/.fluid-container-->
+
+	<!-- external javascript -->
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- library for cookie management -->
+	<script src="js/jquery.cookie.js"></script>
+	<!-- select or dropdown enhancer -->
+	<script src="bower_components/chosen/chosen.jquery.min.js"></script>
+	<!-- notification plugin -->
+	<script src="js/jquery.noty.js"></script>
+	<!-- library for making tables responsive -->
+	<!-- 	<script src='js/jquery.dataTables.min.js'></script> -->
+	<!-- 	<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/r-2.2.1/sc-1.4.4/datatables.min.js"></script> -->
+	<script src="js/jquery.dataTables.min.js"></script>
+	<script src="js/dataTables.bootstrap.min.js"></script>
+	<!-- 	<script src="bower_components/responsive-tables/responsive-tables.js"></script> -->
+	<script src="js/fnReloadAjax.js"></script>
+	<script src="js/select.js"></script>
+	<!-- star rating plugin -->
+	<script src="js/jquery.raty.min.js"></script>
+	<!-- for iOS style toggle switch -->
+	<script src="js/jquery.iphone.toggle.js"></script>
+	<!-- autogrowing textarea plugin -->
+	<script src="js/jquery.autogrow-textarea.js"></script>
+	<!-- multiple file upload plugin -->
+	<script src="js/jquery.uploadify-3.1.min.js"></script>
+	<!-- history.js for cross-browser state change on ajax -->
+	<script src="js/jquery.history.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- application script for Charisma demo -->
+	<script src="js/charisma.js"></script>
+	<script src="js/am.js"></script>
+	<script src="js/index.js"></script>
+
+</body>
+</html>
