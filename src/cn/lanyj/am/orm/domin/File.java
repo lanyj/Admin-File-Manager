@@ -115,7 +115,11 @@ public class File extends UUIDDomin {
 		}
 		if(this.hashCode() == obj.hashCode()) {
 			if(obj instanceof File) {
-				return ((File) obj).getUUID().equals(uuid);
+				if(uuid != null) {
+					return uuid.equals(((File) obj).getUUID());
+				} else {
+					return false;
+				}
 			}
 		}
 		return super.equals(obj);

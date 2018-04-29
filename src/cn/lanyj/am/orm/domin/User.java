@@ -109,7 +109,11 @@ public class User extends UUIDDomin {
 		}
 		if(this.hashCode() == obj.hashCode()) {
 			if(obj instanceof User) {
-				return ((User) obj).uuid.equals(uuid);
+				if(uuid != null) {
+					return uuid.equals(((User) obj).uuid);
+				} else {
+					return false;
+				}
 			}
 		}
 		return super.equals(obj);

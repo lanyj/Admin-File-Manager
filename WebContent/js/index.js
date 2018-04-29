@@ -1,5 +1,15 @@
 var BASE_URL = '/am/api/';
 
+function htmlEncode(value){
+  //create a in-memory div, set it's inner text(which jQuery automatically encodes)
+  //then grab the encoded contents back out.  The div never exists on the page.
+  return $('<div/>').text(value).html();
+}
+
+function htmlDecode(value){
+  return $('<div/>').html(value).text();
+}
+
 function logout() {
 	$.ajax({
 		url: BASE_URL + 'user/logout'
@@ -323,9 +333,9 @@ $(function () {
 function createInboxMessage(msg) {
 	var read = msg['readTime'] != null;
 	var tmp = {}
-	tmp['sender'] = msg['from']['username'];
+	tmp['sender'] = htmlEncode(msg['from']['username']);
 	tmp['createTime'] = msg['createTime'];
-	tmp['content'] = msg['content']
+	tmp['content'] = htmlEncode(msg['content'])
 	tmp['status'] = read ? "已读" : "未读";
 	if(read) {
 		tmp['command'] = '';
@@ -340,17 +350,17 @@ function createInboxMessage(msg) {
 function createOutboxMessage(msg) {
 	var read = msg['readTime'] != null;
 	var tmp = {}
-	tmp['receiver'] = msg['to']['username'];
+	tmp['receiver'] = htmlEncode(msg['to']['username']);
 	tmp['createTime'] = msg['createTime'];
-	tmp['content'] = msg['content']
+	tmp['content'] = htmlEncode(msg['content'])
 	tmp['status'] = read ? "已读" : "未读";
 	return tmp;
 }
 function createFile(file) {
 	var tmp = {}
-	tmp['name'] = file['name'];
+	tmp['name'] = htmlEncode(file['name']);
 	tmp['uploadTime'] = file['uploadTime'];
-	tmp['username'] = file['uploader']['username']
+	tmp['username'] = htmlEncode(file['uploader']['username'])
 //	tmp['command'] = 'command'
 	tmp['command'] = '<div index-file-list-id=' + file['uuid'] + '>'
 				  + '<a class="btn btn-success" index-file-btn-download href="#">'
