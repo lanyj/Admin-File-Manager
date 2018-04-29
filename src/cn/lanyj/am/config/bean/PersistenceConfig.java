@@ -43,11 +43,22 @@ public class PersistenceConfig {
 		dataSource.setUrl(env.getProperty("jdbc.url"));
 		dataSource.setUsername(env.getProperty("jdbc.user"));
 		dataSource.setPassword(env.getProperty("jdbc.pass"));
+
 		dataSource.setMaxWait(1000 * 15);
 		dataSource.setMaxActive(50);
 		dataSource.setMaxIdle(50);
 		dataSource.setInitialSize(20);
 		dataSource.setMaxOpenPreparedStatements(100);
+
+		// 避免连接超时
+		// 参考：http://lihaiming.iteye.com/blog/2267190
+		dataSource.setTestOnBorrow(true);
+		dataSource.setTestWhileIdle(true);
+		dataSource.setValidationQuery("select 1");
+		dataSource.setTimeBetweenEvictionRunsMillis(1000 * 60 * 30);
+		dataSource.setMinEvictableIdleTimeMillis(1000 * 60);
+		dataSource.setRemoveAbandoned(true);
+		dataSource.setRemoveAbandonedTimeout(60 * 3);
 		return dataSource;
 	}
 
