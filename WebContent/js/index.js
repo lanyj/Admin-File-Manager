@@ -432,7 +432,15 @@ $('#index_file_btn_upload').click(function() {
 		contentType: false,
 		cache: false,
 		timeout: 600000,
-		data: data
+		data: data,
+		statusCode: {
+			401: function(xhr) {
+				swal({
+					text: "请先登录！",
+					icon: "error"
+				})
+			}
+		}
 	}).done(function(ret) {
 		if(ret['success']) {
 			swal({

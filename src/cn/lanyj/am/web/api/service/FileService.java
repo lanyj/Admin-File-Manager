@@ -2,6 +2,7 @@ package cn.lanyj.am.web.api.service;
 
 import java.io.IOException;
 
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.lanyj.am.orm.domin.File;
@@ -22,6 +23,23 @@ public class FileService {
 			}
 			file.setPath(root +  file.getUUID());
 			mf.transferTo(new java.io.File(file.getPath()));
+			return ret.setSuccess(true);
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+			return ret.setSuccess(false).setMsg("服务器存储失败！");
+		}
+	}
+	
+	public static RestRetDomin save(RestRetDomin ret, File file, File f) {
+		User user = file.getUploader();
+		String root = ROOT + user.getUUID() + "/";
+		try {
+			java.io.File parent = new java.io.File(root);
+			if(!parent.exists()) {
+				parent.mkdirs();
+			}
+			file.setPath(root +  file.getUUID());
+			FileCopyUtils.copy(new java.io.File(f.getPath()), new java.io.File(file.getPath()));
 			return ret.setSuccess(true);
 		} catch (IllegalStateException | IOException e) {
 			e.printStackTrace();

@@ -3,10 +3,10 @@
 <head>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-5585421066874504",
-    enable_page_level_ads: true
-  });
+	(adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client : "ca-pub-5585421066874504",
+		enable_page_level_ads : true
+	});
 </script>
 
 <!--
@@ -26,7 +26,7 @@
 <meta charset="utf-8">
 <title>Admin Manager</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Admin manager, 给你一种简单的方式去管理文件">
+<meta name="description" content="Admin manager, 给你一种简单的方式去存储文件">
 <meta name="author" content="lanyj">
 
 <!-- The styles -->
@@ -124,7 +124,10 @@
 				</ul>
 			</div>
 			<!-- theme selector ends -->
-
+			<ul class="collapse navbar-collapse nav navbar-nav top-menu">
+				<li><a target="_blank" href="https://github.com/lanyj/Admin-File-Manager"><svg height="32" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></i>
+						</a></li>
+			</ul>
 		</div>
 	</div>
 	<!-- topbar ends -->
@@ -188,7 +191,8 @@
 
 					<div class="col-md-3 col-sm-3 col-xs-6">
 						<a data-toggle="tooltip" title="文件" class="well top-block"
-							href="#index_file_table_href"> <i class="glyphicon glyphicon-folder-open"></i>
+							href="#index_file_table_href"> <i
+							class="glyphicon glyphicon-folder-open"></i>
 							<div>文件</div>
 							<div>
 								<span id="index_total_file">0</span>
@@ -198,7 +202,8 @@
 
 					<div class="col-md-3 col-sm-3 col-xs-6">
 						<a data-toggle="tooltip" title="消息" class="well top-block"
-							href="#index_message_inbox_table_href"> <i class="glyphicon glyphicon-envelope"></i>
+							href="#index_message_inbox_table_href"> <i
+							class="glyphicon glyphicon-envelope"></i>
 							<div>消息</div>
 							<div>
 								<span id="index_total_message">0</span>
@@ -223,14 +228,19 @@
 								</div>
 							</div>
 							<div class="box-content row">
-								<div class="col-lg-7 col-md-12">
+								<div class="col-lg-12 col-md-12">
 									<h1>
 										Admin Manager <br> <small>简单轻便的文件系统</small>
 									</h1>
-									<p>这是一个简单的云端文件管理系统，你可以在这建立自己的文件目录。然后可以与好友一起互传文档，聊天等。</p>
-
+									<p>这是一个简单的云端文件存储系统，你可以在这建立自己的新圈子。然后可以与好友一起聊天。文件互传功能正在建设中...与百度网盘相比，改存储系统更加轻量化，操作更加方便，而且可以通过发信息给自己来方便的存储一些重要的文字记录。</p>
+									<hr />
+									<b>消息系统</b><br />
+										<p>&nbsp;&nbsp;&nbsp;&nbsp;负责站内消息互传，输入自己想要联系的用户的用户名，然后输入内容就可以发送。为了保证消息不具有否认性，暂时不提供删除与编辑功能</p>
+									<b>文件系统</b><br />
+										<p>&nbsp;&nbsp;&nbsp;&nbsp;负责自己的文件管理，将自己的文件上传上去，然后便可以在其他设备上下载使用。</p>
+									<hr/>
 									<p>
-										<b>你可以分享此网站，让更多人加入我们。(:</b>
+										<b>如果你喜欢本网站，可以在<a href="https://github.com/lanyj/Admin-File-Manager">Github</a>上找到我。你也可以分享此网站，让更多人加入我们。(:</b>
 									</p>
 								</div>
 
@@ -282,8 +292,7 @@
 					</div>
 				</div>
 
-				<div class="row">
-				</div>
+				<div class="row"></div>
 				<!--/row-->
 
 				<div class="row" id="index_message_inbox_table_href">
@@ -392,8 +401,9 @@
 										<input type="hidden" name="parent" value="" />
 										<div class="input-group input-group-lg">
 											<span class="input-group-addon"><i
-												class="glyphicon glyphicon-upload red"></i></span> <input type="file"
-												name="file" class="form-control" id="index_file_control_upload" >
+												class="glyphicon glyphicon-upload red"></i></span> <input
+												type="file" name="file" class="form-control"
+												id="index_file_control_upload">
 										</div>
 										<div class="clearfix"></div>
 										<br>

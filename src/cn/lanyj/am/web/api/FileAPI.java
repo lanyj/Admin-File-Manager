@@ -265,7 +265,7 @@ public class FileAPI {
 		}
 		response.setHeader("Content-Disposition", "attachment; filename=" + filename);
 		response.setContentType("Content-Type: application/octet-stream");
-		byte[] buf = new byte[1024 * 4];
+		byte[] buf = new byte[1024 * 64];
 		BufferedInputStream bis = null;
 		try {
 			bis = new BufferedInputStream(new FileInputStream(new java.io.File(file.getPath())));

@@ -3,7 +3,7 @@ package cn.lanyj.am.config.web;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class BookLibraryWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class AdminManagerWebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {

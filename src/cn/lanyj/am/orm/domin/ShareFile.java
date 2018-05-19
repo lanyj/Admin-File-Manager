@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -44,8 +45,7 @@ public class ShareFile extends UUIDDomin {
 		this.owner = owner;
 	}
 
-
-
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
