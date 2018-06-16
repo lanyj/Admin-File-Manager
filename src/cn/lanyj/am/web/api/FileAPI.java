@@ -126,7 +126,13 @@ public class FileAPI {
 			return ret.setSuccess(false).setMsg(PARENT_NOT_DIRECTORY);
 		}
 
-		String filename = file.getOriginalFilename();
+		String filename = null;
+		try {
+			filename = new String(file.getOriginalFilename().getBytes("iso-8859-1"), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	
 		File tmp = new File();
 		tmp.setName(filename);
 		tmp.setUploader(user);

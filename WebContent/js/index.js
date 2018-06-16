@@ -12,7 +12,12 @@ function htmlDecode(value){
 
 function logout() {
 	$.ajax({
-		url: BASE_URL + 'user/logout'
+		url: BASE_URL + 'user/logout',
+		statusCode: {
+			401: function(xhr) {
+				window.location.href = 'login.html'
+			}
+		}
 	}).done(function() {
 		window.location.href = 'login.html'
 	})
